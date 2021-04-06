@@ -1,11 +1,11 @@
-import { Router as _Router } from 'express'
-const Router = _Router()
-import { query } from '../config/connection'
+const express = require('express');
+const Router = express.Router()
+const mySqlConnection = require('../config/connection');
 
 Router.get('/', (req, res) => {
-    query('SELECT * FROM clients', (err, rows) => {
+    mySqlConnection.query('SELECT * FROM clients', (err, rows) => {
         (!err) ? res.send(rows) : console.log(err)
     })
 })
 
-export default Router
+module.exports = Router

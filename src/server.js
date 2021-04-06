@@ -1,11 +1,11 @@
-import express from 'express'
-import { json } from 'body-parser'
-import mysqlConnection from './config/connection'
-import clients from './js/clients'
+const express = require('express')
+const bodyParser = require('body-parser')
+const mysqlConnection = require('./config/connection')
+const clients = require('./js/clients')
 
 var app = express()
 
-app.use(json())
+app.use(bodyParser.json())
 
 app.use('/clients', clients)
 
